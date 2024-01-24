@@ -49,7 +49,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">  
+            <a class="navbar-brand" href="{{ url('/') }}">  
               <div class="Logo">
                 <img src="{!! asset('assets/images/Logo.svg') !!}" alt="Logo"/>
             </div>
@@ -62,19 +62,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="service">Layanan</a>
+                  <a class="nav-link" href="{{ url('/service') }}">Layanan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about">Tentang Kami</a>
+                  <a class="nav-link" href="{{ url('/about') }}">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact">Temukan Kami</a>
+                  <a class="nav-link" href="{{ url('/contact') }}">Hubungi Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="login"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                  <a class="nav-link" href="{{ url('/login') }}"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
                 </li>
               </ul>
             </div>
@@ -99,7 +99,7 @@
                     <p>
                       Jelajahi kenyamanan penuh dengan aplikasi laundry revolusioner kami - Quantum Laundry. Kami mengubah pengalaman laundry anda dengan menyesuaikan diri dengan gaya hidup  anda. Tidak lagi terikat waktu atau lokasi, kami hadir membawa layanan laundry sesuai dengan pilihan Anda.                    </p>
                     <div class="btn-box">
-                      <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                      <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini." class="btn1" target="_blank">
                         Pesan Sekarang
                       </a>
                     </div>
@@ -119,7 +119,7 @@
                     <p>
                       Tertarik dengan penawaran kami? Kami hadir dengan layanan yang mudah dan terjangkau - Quantum Laundry, Incredibly Affordable. Kami memahami bahwa kualitas tak perlu mahal, dan kami telah menghadirkan solusi yang luar biasa dengan harga yang sesuai kantong Anda.</p>
                     <div class="btn-box">
-                      <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                      <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini." class="btn1" target="_blank">
                         Pesan Sekarang
                       </a>
                     </div>
@@ -139,7 +139,7 @@
                     <p>
                       Kami hadir dengan jaminan kebersihan yang tak tertandingi - Quantum Laundry. Setiap cucian Anda diperlakukan dengan teliti dan penuh perhatian, kami memberikan jaminan bahwa hasilnya akan selalu mencapai standar kebersihan anda. Dengan Quantum Laundry, kami bukan hanya menyediakan layanan laundry, tapi juga memberikan kepercayaan bahwa pakaian Anda akan kembali bersih dan segar.</p>
                     <div class="btn-box">
-                      <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                      <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini." class="btn1" target="_blank">
                         Pesan Sekarang
                       </a>
                     </div>
@@ -190,7 +190,7 @@
                   Pakaian dicuci dengan sistem 1 nota 1 mesin menggunakan bahan yang aman dan terjamin, dengan menggunakan chemical premium dari deterjen, sour hingga softener. 
                   Pakaian akan dikeringkan kemudian dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda tetaop wangi.                  
                 </p>
-                <a href="cuci.html" class="btn1">
+                <a href="{{ url('/cuci') }}" class="btn1">
                   Lihat Paket
                 </a>
               </div>
@@ -208,7 +208,7 @@
                 <p>
                   Pakaian akan dikeringkan kemudian akan melalui tahap setrika menggunakan setrika uap, dimana pada setiap bagian pakaian akan diperhatikan kerapihannya untuk kemudian dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda tetap wangi.
                 </p>
-                <a href="setrika.html" class="btn1">
+                <a href="{{ url('/setrika') }}" class="btn1">
                   Lihat Paket
                 </a>
               </div>
@@ -227,7 +227,7 @@
                   Layanan sempurna untuk sepatu anda. Nikmati layanan profesional untuk sepatu anda dimana semua sepatu diproses dengan metode dan bahan baku khusus. Dengan keamanan yang terjamin karena menggunakan metode rekam untuk mencegah sepatu anda hilang, rusak atau tertukar.
                   Setiap item kami rawat dan bersihkan sesuai dengan bahan, tipe dan kondisi item agar bersih optimal. Untuk kemudian dikemas secara rapih dan aman.
                 </p>
-                <a href="sepatu.html" class="btn1">
+                <a href="{{ url('/sepatu') }}" class="btn1">
                   Lihat Paket
                 </a>
               </div>
@@ -280,7 +280,7 @@
               Layanan sempurna untuk Anda yang sedang buru-buru butuh layanan laundry.
               Nikmati layanan laundry express yang tepat waktu dan fleksibel. Pilih layanan express mulai dari 24 jam sampai dengan 6 jam. Kami siap mengantar dan menjemput pakaian anda kemanapun. Anda bisa menjadwalkan penjemputan instan atau sesuai waktu preferensi Anda. Nitmati gratis biaya Antar & Jemput sampai Rp 15.000 dengan Minimal transaksi Rp 50.000
             </p>
-            <a href="service.html" class="btn1">
+            <a href="{{ url('/service') }}" class="btn1">
               Lihat Paket Layanan
             </a>
           </div>
@@ -408,19 +408,19 @@
               Links
             </h4>
             <div class="info_links">
-              <a class="active" href="index.html">
+              <a class="active" href="{{ url('/') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Home
               </a>
-              <a class="" href="about.html">
+              <a class="" href="{{ url('/about') }}">
                 <img src="images/nav-bullet.png" alt="">
                 About
               </a>
-              <a class="" href="service.html">
+              <a class="" href="{{ url('/service') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Services
               </a>
-              <a class="" href="contact.html">
+              <a class="" href="{{ url('/contact') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Contact Us
               </a>
