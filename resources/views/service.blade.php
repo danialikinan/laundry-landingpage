@@ -118,7 +118,7 @@
                   Pakaian dicuci dengan sistem 1 nota 1 mesin menggunakan bahan yang aman dan terjamin, dengan menggunakan chemical premium dari deterjen, sour hingga softener. 
                   Pakaian akan dikeringkan kemudian dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda tetaop wangi.                  
                 </p>
-                <a href="cuci" class="btn1">
+                <a href="{{ url('/package') }}" class="btn1">
                   Lihat Paket
                 </a>
               </div>
@@ -136,7 +136,7 @@
                 <p>
                   Pakaian akan dikeringkan kemudian akan melalui tahap setrika menggunakan setrika uap, dimana pada setiap bagian pakaian akan diperhatikan kerapihannya untuk kemudian dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda tetap wangi.
                 </p>
-                <a href="setrika" class="btn1">
+                <a href="{{ url('/package') }}" class="btn1">
                   Lihat Paket
                 </a>
               </div>
@@ -155,7 +155,7 @@
                   Layanan sempurna untuk sepatu anda. Nikmati layanan profesional untuk sepatu anda dimana semua sepatu diproses dengan metode dan bahan baku khusus. Dengan keamanan yang terjamin karena menggunakan metode rekam untuk mencegah sepatu anda hilang, rusak atau tertukar.
                   Setiap item kami rawat dan bersihkan sesuai dengan bahan, tipe dan kondisi item agar bersih optimal. Untuk kemudian dikemas secara rapih dan aman.
                 </p>
-                <a href="sepatu" class="btn1">
+                <a href="{{ url('/package') }}" class="btn1">
                   Lihat Paket
                 </a>
               </div>

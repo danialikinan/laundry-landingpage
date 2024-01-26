@@ -113,7 +113,7 @@
           </div>
         </div>
         <div class="col-md-6 ">
-          <div class="img-box">
+          <div class="img-box" >
             <img src="{!! asset('assets/images/Foto Laundry.png') !!}"  alt="">
           </div>
         </div>
