@@ -11,7 +11,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="{!! asset('assets/images/Login 1.png') !!}" type="">
+  <link rel="shortcut icon" href="{!! asset('assets/images/Logo 1.png') !!}" type="">
 
   <title> Quantum Laundry </title>
 
