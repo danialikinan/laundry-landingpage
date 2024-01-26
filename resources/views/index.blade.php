@@ -11,7 +11,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/Logo 1.png" type="">
+  <link rel="shortcut icon" href="{!! asset('assets/images/Logo 1.png') !!}" type="">
 
   <title> Quantum Laundry </title>
 
@@ -26,7 +26,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- font awesome style -->
-  <link href= "{!! asset('assets/css/font-awesome.min.css') !!}" rel="stylesheet">
+  <link href= "{!! asset('assets/css/font-awesome.min.css') !!}" rel="stylesheet">  
 
   <!-- Custom styles for this template -->
   <link href= "{!! asset('assets/css/style.css') !!}" rel="stylesheet">
