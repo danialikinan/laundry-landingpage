@@ -20,14 +20,6 @@ Route::get('/service', [PagesController::class, 'service']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/contact', [PagesController::class, 'contact']);
 Route::get('/package', [PagesController::class, 'package']);
-
-
-// Route::get('/login', function () {
-//     return view('login');
-// });
-// Route::get('/admin', function () {
-//     return view('admin');
-// });
-// Route::get('/admin1', function () {
-//     return view('admin1');
-// });
+Route::get('/login',[PagesController::class, 'login']);
+Route::get('/adminservice',[PagesController::class, 'adminservice']);
+Route::get('/adminpackage',[PagesController::class, 'adminpackage']);

@@ -108,7 +108,7 @@
             </a>
         </section>
         <section>
-            <button onclick="location.href='/admin';">Login</button>
+            <button onclick="location.href='/adminservice';">Login</button>
         </section>
         </section>
     </article>

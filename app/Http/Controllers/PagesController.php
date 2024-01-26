@@ -30,4 +30,19 @@ class PagesController extends Controller
     {
         return view('package');
     }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function adminservice()
+    {
+        return view('adminservice');
+    }
+
+    public function adminpackage()
+    {
+        return view('adminpackage');
+    }
 }
