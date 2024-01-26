@@ -14,7 +14,8 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        $package = Package::get();
+        return view('adminpackage', compact('package'));
     }
 
     /**
@@ -35,7 +36,17 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'price'=>'required',
+            'time'=>'required'
+        ]);
+
+        Package::create($request->all());
+        
+        return redirect('/adminpackage')->with('success', 'Data Berhasil Ditambahkan');
+
     }
 
     /**
@@ -78,8 +89,9 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Package $package)
+    public function destroy($id)
     {
-        //
+        Package::destroy($id);
+        return redirect('/adminpackage')->with('success', 'Data Berhasil Dihapus');
     }
 }

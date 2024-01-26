@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['name', 'description', 'price', 'time'];
+
+    protected $attributes = [
+        'id_service' => 'null',
+        'image'=> 'null',
+        'is_deleted'=> 'false'
+    ];
 }

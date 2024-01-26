@@ -41,8 +41,4 @@ class PagesController extends Controller
         return view('adminservice');
     }
 
-    public function adminpackage()
-    {
-        return view('adminpackage');
-    }
 }

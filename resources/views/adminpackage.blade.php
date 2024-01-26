@@ -8,7 +8,8 @@
     <title>Sidebar Dropdown Menu | Korsat X Parmaga</title>
 
     <!-- Box Icons  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
     <link rel="shortcut icon" href="assets/img/kxp_fav.png" type="image/x-icon">
@@ -58,14 +59,14 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="/" class="link">
+                    <a href="{{ url('/') }}" class="link">
                         <i class='bx bx-cog'></i>
                         <span class="name">Log out</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="/" class="link submenu-title">Log out</a>
+                    <a href="{{ url('/') }}" class="link submenu-title">Log out</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -81,93 +82,102 @@
         <div class="container">
             <h1>Paket</h1>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
                 Tambah
             </button>
             <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="tambahLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Nama</label>
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Deskripsi</label>
-                          </div>
-                          <div class="mb-3">
-                            <label for="formFile" class="form-label">Gambar</label>
-                            <input class="form-control" type="file" id="formFile">
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Harga</label>
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Time</label>
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Created At</label>
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Update At</label>
-                          </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
-                    </div>
-                </div>
+                    <form method="post" action="/adminpackage">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="tambahLabel">Tambah Paket</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="name" name="name">
+                                    <label for="name">Nama</label>
+                                    @error('name')
+                                        <p class="text-danger">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="description" name="description">
+                                    <label for="description">Deskripsi</label>
+                                </div>
+                                {{-- <div class="mb-3">
+                                <label for="formFile" class="form-label">Gambar</label>
+                                <input class="form-control" type="file" id="formFile">
+                              </div> --}}
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="price" name="price">
+                                    <label for="price">Harga</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="time" name="time">
+                                    <label for="time">Waktu Pengerjaan</label>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                    </form>
                 </div>
             </div>
-            <br>
-            <br>
-            <table class="table">
-                <thead>
-                  <tr>
+        </div>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Paket</th>
                     <th scope="col">Deskripsi</th>
                     <th scope="col">Image</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Created at</th>
-                    <th scope="col">Update at</th>
                     <th scope="col">Edit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>cuci</td>
-                    <td>adadasdasdasdas</td>
-                    <td>adadasdasdasdas</td>
-                    <td>adadasdasdasdas</td>
-                    <td>ini gambar</td>
-                    <td>jam segini</td>
-                    <td>jam segini</td>
-                    <td><button type="button" class="btn btn-success">Edit</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </td>
-                  </tr>
-                
-                </tbody>
-              </table>
-          </div>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($package as $p)
+                    <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $p->name }}</td>
+                        <td>{{ $p->description }}</td>
+                        <td>{{ $p->image }}</td>
+                        <td>Rp. {{ $p->price }}</td>
+                        <td>{{ $p->time }} Hari</td>
+                        <td>
+                            <button type="button" class="btn btn-success">Edit</button>
+                            <form action="/adminpackage/{{ $p->id }}" method="post" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Apakah anda serius dengan menghapusnya?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        </div>
     </section>
 
     <!-- Link JS -->
     <script src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 </body>
 

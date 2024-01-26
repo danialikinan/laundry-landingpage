@@ -22,4 +22,8 @@ Route::get('/contact', [PagesController::class, 'contact']);
 Route::get('/package', [PagesController::class, 'package']);
 Route::get('/login',[PagesController::class, 'login']);
 Route::get('/adminservice',[PagesController::class, 'adminservice']);
-Route::get('/adminpackage',[PagesController::class, 'adminpackage']);
+
+
+Route::get('/adminpackage', [PackageController::class, 'index']);
+Route::post('/adminpackage', [PackageController::class, 'store']);
+Route::delete('/adminpackage/{id}', [PackageController::class, 'destroy']);
