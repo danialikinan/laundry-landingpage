@@ -35,7 +35,7 @@
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="admin" class="link submenu-title">Dashboard</a>
+                    <a href="{{ url('/adminservice') }}" class="link submenu-title">Dashboard</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -44,14 +44,14 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="admin1" class="link">
+                    <a href="{{ url('/adminpackage') }}" class="link">
                         <i class='bx bx-history'></i>
                         <span class="name">Paket</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="admin1" class="link submenu-title">Paket</a>
+                    <a href="{{ url('/adminpackage') }}" class="link submenu-title">Paket</a>
                     <!-- submenu links here  -->
                 </div>
             </li>

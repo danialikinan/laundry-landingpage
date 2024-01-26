@@ -48,7 +48,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ url('/') }}">
               <div class="Logo">
               <img src="{!! asset('assets/images/Logo.svg') !!}" alt="Logo"/>
             </div>
@@ -61,19 +61,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ">
                 <li class="nav-item ">
-                  <a class="nav-link" href="/">Home </a>
+                  <a class="nav-link" href="{{ url('/') }}">Home </a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="service">Layanan Kami <span class="sr-only">(current)</span> </a>
+                  <a class="nav-link" href="{{ url('/service') }}">Layanan Kami <span class="sr-only">(current)</span> </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about"> Tentang Kami</a>
+                  <a class="nav-link" href="{{ url('/about') }}"> Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact">Temukan Kami</a>
+                  <a class="nav-link" href="{{ url('/contact') }}">Temukan Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="login"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                  <a class="nav-link" href="{{ url('/login') }}"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
                 </li>
                 <form class="form-inline">
                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
@@ -118,7 +118,7 @@
                   Pakaian dicuci dengan sistem 1 nota 1 mesin menggunakan bahan yang aman dan terjamin, dengan menggunakan chemical premium dari deterjen, sour hingga softener. 
                   Pakaian akan dikeringkan kemudian dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda tetaop wangi.                  
                 </p>
-                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1" target="_blank">
                   Pesan Sekarang
                 </a>
               </div>
@@ -136,7 +136,7 @@
                 <p>
                   Pakaian akan dikeringkan kemudian akan melalui tahap setrika menggunakan setrika uap, dimana pada setiap bagian pakaian akan diperhatikan kerapihannya untuk kemudian dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda tetap wangi.
                 </p>
-                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1" target="_blank">
                   Pesan Sekarang
                 </a>
               </div>
@@ -155,7 +155,7 @@
                   Layanan sempurna untuk sepatu anda. Nikmati layanan profesional untuk sepatu anda dimana semua sepatu diproses dengan metode dan bahan baku khusus. Dengan keamanan yang terjamin karena menggunakan metode rekam untuk mencegah sepatu anda hilang, rusak atau tertukar.
                   Setiap item kami rawat dan bersihkan sesuai dengan bahan, tipe dan kondisi item agar bersih optimal. Untuk kemudian dikemas secara rapih dan aman.
                 </p>
-                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1" target="_blank">
                   Pesan Sekarang
                 </a>
               </div>
@@ -230,19 +230,19 @@
               Links
             </h4>
             <div class="info_links">
-              <a class="active" href="index.html">
+              <a class="active" href="{{ url('/') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Home
               </a>
-              <a class="" href="about.html">
+              <a class="" href="{{ url('/about') }}">
                 <img src="images/nav-bullet.png" alt="">
                 About
               </a>
-              <a class="" href="service.html">
+              <a class="" href="{{ url('/service') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Services
               </a>
-              <a class="" href="contact.html">
+              <a class="" href="{{ url('/contact') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Contact Us
               </a>

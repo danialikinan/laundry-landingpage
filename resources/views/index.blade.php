@@ -248,7 +248,7 @@
                   Gratis Antar & Jemput!
                   Nitmati gratis biaya Antar & Jemput sampai Rp 15.000 dengan Minimal transaksi Rp 50.000
                 </p>
-                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1" target="_blank">
                   Pesan Sekarang
                 </a>
               </div>

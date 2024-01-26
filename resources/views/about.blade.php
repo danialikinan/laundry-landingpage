@@ -48,7 +48,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ url('/') }}">
               <div class="Logo">
                 <img src="{!! asset('assets/images/Logo.svg') !!}"  alt="Logo"/>
             </div>
@@ -61,19 +61,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ">
                 <li class="nav-item ">
-                  <a class="nav-link" href="/">Home </a>
+                  <a class="nav-link" href="{{ url('/') }}">Home </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="service">Layanan</a>
+                  <a class="nav-link" href="{{ url('/service') }}">Layanan</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="about">Tentang Kami <span class="sr-only">(current)</span> </a>
+                  <a class="nav-link" href="{{ url('/about') }}">Tentang Kami <span class="sr-only">(current)</span> </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact">Temukan Kami</a>
+                  <a class="nav-link" href="{{ url('/contact') }}">Temukan Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="login"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                  <a class="nav-link" href="{{ url('/login') }}"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
                 </li>
                 <form class="form-inline">
                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
@@ -107,7 +107,7 @@
               Layanan sempurna untuk Anda yang sedang buru-buru butuh layanan laundry.
               Nikmati layanan laundry express yang tepat waktu dan fleksibel. Pilih layanan express mulai dari 24 jam sampai dengan 6 jam. Kami siap mengantar dan menjemput pakaian anda kemanapun. Anda bisa menjadwalkan penjemputan instan atau sesuai waktu preferensi Anda. Nitmati gratis biaya Antar & Jemput sampai Rp 15.000 dengan Minimal transaksi Rp 50.000
             </p>
-            <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1">
+            <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1" target="_blank">
               Pesan Sekarang
             </a>
           </div>
@@ -186,19 +186,19 @@
               Links
             </h4>
             <div class="info_links">
-              <a class="active" href="index.html">
+              <a class="active" href="{{ url('/') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Home
               </a>
-              <a class="" href="about.html">
+              <a class="" href="{{ url('/about') }}">
                 <img src="images/nav-bullet.png" alt="">
                 About
               </a>
-              <a class="" href="service.html">
+              <a class="" href="{{ url('/service') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Services
               </a>
-              <a class="" href="contact.html">
+              <a class="" href="{{ url('/contact') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Contact Us
               </a>

@@ -52,7 +52,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ url('/') }}">
               <div class="Logo">
               <img src="{!! asset('assets/images/Logo.svg') !!}" alt="Logo"/>
             </div>
@@ -65,19 +65,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ">
                 <li class="nav-item">
-                  <a class="nav-link" href="index">Home</a>
+                  <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="service">Layanan</a>
+                  <a class="nav-link" href="{{ url('/service') }}">Layanan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about">Tentang Kami</a>
+                  <a class="nav-link" href="{{ url('/about') }}">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact">Temukan Kami</a>
+                  <a class="nav-link" href="{{ url('/contact') }}">Temukan Kami</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="login"> <i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a></a>
+                  <a class="nav-link" href="{{ url('/login') }}"> <i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a></a>
                 </li>
               </ul>
             </div>
