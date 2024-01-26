@@ -35,10 +35,4 @@ class PagesController extends Controller
     {
         return view('login');
     }
-
-    public function adminservice()
-    {
-        return view('adminservice');
-    }
-
 }

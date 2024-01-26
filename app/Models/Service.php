@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'description'];
+
+    protected $attributes = [
+        'image' => 'null',
+        'is_deleted' => 'false'
+    ];
 }

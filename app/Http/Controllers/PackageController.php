@@ -37,16 +37,15 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'price'=>'required',
-            'time'=>'required'
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'time' => 'required'
         ]);
 
         Package::create($request->all());
-        
-        return redirect('/adminpackage')->with('success', 'Data Berhasil Ditambahkan');
 
+        return redirect('/adminpackage')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

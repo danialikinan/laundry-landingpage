@@ -14,16 +14,20 @@ use App\Http\Controllers;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Route Landing Page
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/service', [PagesController::class, 'service']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/contact', [PagesController::class, 'contact']);
 Route::get('/package', [PagesController::class, 'package']);
-Route::get('/login',[PagesController::class, 'login']);
-Route::get('/adminservice',[PagesController::class, 'adminservice']);
+Route::get('/login', [PagesController::class, 'login']);
 
-
+//Route Admin Package
 Route::get('/adminpackage', [PackageController::class, 'index']);
 Route::post('/adminpackage', [PackageController::class, 'store']);
 Route::delete('/adminpackage/{id}', [PackageController::class, 'destroy']);
+
+//Route Admin Service
+Route::get('/adminservice', [ServiceController::class, 'index']);
+Route::post('/adminservice', [ServiceController::class, 'store']);
+Route::delete('/adminservice/{id}', [ServiceController::class, 'destroy']);

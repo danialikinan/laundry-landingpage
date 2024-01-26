@@ -14,7 +14,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $service = Service::get();
+        return view('adminservice', compact('service'));
     }
 
     /**
@@ -35,7 +36,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        Service::create($request->all());
+
+        return redirect('/adminservice')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -78,8 +86,9 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        Service::destroy($id);
+        return redirect('/adminservice')->with('success', 'Data Berhasil Dihapus');
     }
 }
