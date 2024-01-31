@@ -200,7 +200,7 @@
                         <div class="col-md-6 ">
                             <div class="box ">
                                 <div class="img-box">
-                                    <img src="{!! asset('assets/images/Cuci Kering.png') !!}" alt="">
+                                    <img src="{{ asset('uploads/service/' . $s->image) }}" alt="service-image">
                                 </div>
                                 <div class="detail-box">
                                     <h5>
@@ -216,72 +216,7 @@
                             </div>
                         </div>
                     @endforeach
-                    {{-- <div class="col-md-6 ">
-                        <div class="box ">
-                            <div class="img-box">
-                                <img src="{!! asset('assets/images/Cuci Kering Setrika.png') !!}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Cuci Kering & Setrika
-                                </h5>
-                                <p>
-                                    Pakaian akan dikeringkan kemudian akan melalui tahap setrika menggunakan setrika
-                                    uap, dimana pada setiap bagian pakaian akan diperhatikan kerapihannya untuk kemudian
-                                    dikemas dengan rapih, sehingga dapat menjaga kebersihan dan menjaga pakaian anda
-                                    tetap wangi.
-                                </p>
-                                <a href="{{ url('/package') }}" class="btn1">
-                                    Lihat Paket
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 ">
-                        <div class="box ">
-                            <div class="img-box">
-                                <img src="{!! asset('assets/images/Dry & Clean.png') !!}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Dry & Clean Sepatu
-                                </h5>
-                                <p>
-                                    Layanan sempurna untuk sepatu anda. Nikmati layanan profesional untuk sepatu anda
-                                    dimana semua sepatu diproses dengan metode dan bahan baku khusus. Dengan keamanan
-                                    yang terjamin karena menggunakan metode rekam untuk mencegah sepatu anda hilang,
-                                    rusak atau tertukar.
-                                    Setiap item kami rawat dan bersihkan sesuai dengan bahan, tipe dan kondisi item agar
-                                    bersih optimal. Untuk kemudian dikemas secara rapih dan aman.
-                                </p>
-                                <a href="{{ url('/package') }}" class="btn1">
-                                    Lihat Paket
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 ">
-                        <div class="box ">
-                            <div class="img-box">
-                                <img src="{!! asset('assets/images/Logo Antar Jemput.png') !!}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>
-                                    Antar & Jemput
-                                </h5>
-                                <p>
-                                    Kami siap mengantar dan menjemput pakaian anda kemanapun.
-                                    Anda bisa menjadwalkan penjemputan instan atau sesuai waktu preferensi Anda.
-                                    Gratis Antar & Jemput!
-                                    Nitmati gratis biaya Antar & Jemput sampai Rp 15.000 dengan Minimal transaksi Rp
-                                    50.000
-                                </p>
-                                <a href="https://wa.me/628986828976?text=Saya ingin memesan paket ini" class="btn1"
-                                    target="_blank">
-                                    Pesan Sekarang
-                                </a>
-                            </div>
-                        </div> --}}
+
                 </div>
             </div>
         </div>

@@ -115,7 +115,7 @@
                         <div class="col-md-6 ">
                             <div class="box ">
                                 <div class="img-box">
-                                    <img src="{!! asset('assets/images/Cuci Kering.png') !!}" alt="">
+                                    <img src="{{ asset('uploads/service/' . $item->image) }}" alt="service-image">
                                 </div>
                                 <div class="detail-box">
                                     <h5>

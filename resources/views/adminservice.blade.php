@@ -39,7 +39,7 @@
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="{{ url('/adminservice') }}" class="link submenu-title">Dashboard</a>
+                    <a href="{{ url('/adminservice') }}" class="link submenu-title">Layanan</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -92,7 +92,7 @@
             <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="tambahLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" action="/adminservice">
+                    <form method="post" action="/adminservice" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
@@ -115,15 +115,17 @@
                                     <label for="description">Deskripsi</label>
                                 </div>
 
-                                {{-- <div class="mb-3">
-                                <label for="formFile" class="form-label">Gambar</label>
-                                <input class="form-control" type="file" id="formFile">
-                              </div> --}}
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Gambar</label>
+                                    <input type="file" name="image" id="image" class="form-control"
+                                        placeholder="image">
+                                </div>
 
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
@@ -132,10 +134,10 @@
             </div>
 
             <!--  EditModal -->
-            <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="editLabel" aria-hidden="true">
+            <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" action="" id="edit-form">
+                    <form method="post" action="" id="edit-form" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <input type="hidden" id="service-id" name="service-id">
@@ -163,10 +165,15 @@
                                     <label for="service-description">Deskripsi</label>
                                 </div>
 
-                                {{-- <div class="mb-3">
-                <label for="formFile" class="form-label">Gambar</label>
-                <input class="form-control" type="file" id="formFile">
-              </div> --}}
+                                @foreach ($service as $s)
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">Gambar</label>
+                                        <input type="file" name="service-image" id="service-image"
+                                            class="form-control">
+                                        <img src="{{ asset('uploads/service/' . $s->image) }}" width="70px"
+                                            height="70px" alt="service-image">
+                                    </div>
+                                @endforeach
 
                             </div>
 
@@ -198,11 +205,13 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $s->name }}</td>
                             <td>{{ $s->description }}</td>
-                            <td>{{ $s->image }}</td>
+                            <td><img src="{{ asset('uploads/service/' . $s->image) }}" width="70px" height="70px"
+                                    alt="service-image"></td>
                             <td>
                                 <button type="button" class="btn btn-primary editbtn" data-bs-toggle="modal"
                                     data-service-name="{{ $s->name }}" data-service-id="{{ $s->id }}"
-                                    data-service-description="{{ $s->description }}" data-bs-target="#edit">
+                                    data-service-description="{{ $s->description }}"
+                                    data-bs-image="{{ $s->image }}" data-bs-target="#edit">
                                     Edit
                                 </button>
                                 @section('name')
@@ -236,11 +245,13 @@
                 var id = $(e.relatedTarget).data('service-id');
                 var name = $(e.relatedTarget).data('service-name');
                 var description = $(e.relatedTarget).data('service-description');
+                var image = $(e.relatedTarget).data('service-image');
 
-                $('#service-name').attr("value", name);
                 $('#edit-form').attr("action", "/adminservice/" + id);
+                $('#service-name').attr("value", name);
                 $('#service-id').attr("value", id);
                 $('#service-description').attr("value", description);
+                $('#service-image').attr("value", image);
 
             })
             $('#edit').on('hidden.bs.modal', function(e) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PackageController extends Controller
 {
@@ -36,15 +37,19 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'time' => 'required'
-        ]);
-
-        Package::create($request->all());
-
+        $package = new Package;
+        $package->name = $request->input('name');
+        $package->description = $request->input('description');
+        $package->price = $request->input('price');
+        $package->time = $request->input('time');
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->move('uploads/package/', $filename);
+            $package->image = $filename;
+        }
+        $package->save();
         return redirect('/adminpackage')->with('success', 'Data Berhasil Ditambahkan');
     }
 
@@ -65,25 +70,28 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
-        $request->validate([
-            'package-name' => 'required',
-            'package-description' => 'required',
-            'package-price' => 'required',
-            'package-time' => 'required'
-        ]);
-        $id =  $request->get('package-id');
         $package = Package::find($id);
-        if ($package == null) {
-            return redirect('/adminpackage')->with('success', 'Paket tidak ditemukan');
+        $package->name = $request->input('package-name');
+        $package->description = $request->input('package-description');
+        $package->price = $request->input('package-price');
+        $package->time = $request->input('package-time');
+        if ($request->hasfile('package-image')) {
+            $destination = 'uploads/package/' . $package->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $file = $request->file('package-image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->move('uploads/package/', $filename);
+            $package->image = $filename;
         }
-        $package->name = $request->get("package-name");
-        $package->description = $request->get("package-description");
-        $package->price = $request->get("package-price");
-        $package->time = $request->get("package-time");
-        $package->save();
-        return redirect('/adminpackage')->with('success', 'Data Berhasil Disimpan');
+
+
+        $package->update();
+        return redirect('/adminpackage')->with('success', 'Data Berhasil Diupdate');
     }
 
 

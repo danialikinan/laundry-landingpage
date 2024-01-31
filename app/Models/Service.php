@@ -9,10 +9,9 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'image',];
 
     protected $attributes = [
-        'image' => 'null',
-        'is_deleted' => 'false'
+        'is_deleted' => 'false',
     ];
 }

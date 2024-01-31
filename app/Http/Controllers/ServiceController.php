@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ServiceController extends Controller
 {
@@ -36,13 +37,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-        ]);
-
-        Service::create($request->all());
-
+        $service = new Service;
+        $service->name = $request->input('name');
+        $service->description = $request->input('description');
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->move('uploads/service/', $filename);
+            $service->image = $filename;
+        }
+        $service->save();
         return redirect('/adminservice')->with('success', 'Data Berhasil Ditambahkan');
     }
 
@@ -63,22 +68,26 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
-        $request->validate([
-            'service-name' => 'required',
-            'service-description' => 'required',
-        ]);
-
-        $id =  $request->get('service-id');
         $service = Service::find($id);
-        if ($service == null) {
-            return redirect('/adminservice')->with('success', 'Service tidak ditemukan');
+        $service->name = $request->input('service-name');
+        $service->description = $request->input('service-description');
+        if ($request->hasfile('service-image')) {
+            $destination = 'uploads/service/' . $service->image;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            $file = $request->file('service-image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->move('uploads/service/', $filename);
+            $service->image = $filename;
         }
-        $service->name = $request->get("service-name");
-        $service->description = $request->get("service-description");
-        $service->save();
-        return redirect('/adminservice')->with('success', 'Data Berhasil Disimpan');
+
+
+        $service->update();
+        return redirect('/adminservice')->with('success', 'Data Berhasil Diupdate');
     }
 
     /**

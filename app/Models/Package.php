@@ -9,11 +9,10 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'time'];
+    protected $fillable = ['name', 'description', 'price', 'time', 'image',];
 
     protected $attributes = [
         'id_service' => 'null',
-        'image' => 'null',
-        'is_deleted' => 'false'
+        'is_deleted' => 'false',
     ];
 }

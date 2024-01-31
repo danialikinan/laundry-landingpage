@@ -39,7 +39,7 @@
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="{{ url('/adminpackage') }}" class="link submenu-title">Dashboard</a>
+                    <a href="{{ url('/adminpackage') }}" class="link submenu-title">Paket</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -92,7 +92,7 @@
             <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="tambahLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" action="/adminpackage">
+                    <form method="post" action="/adminpackage" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-content">
                             <div class="modal-header">
@@ -114,10 +114,13 @@
                                     <input type="text" class="form-control" id="description" name="description">
                                     <label for="description">Deskripsi</label>
                                 </div>
-                                {{-- <div class="mb-3">
-                                <label for="formFile" class="form-label">Gambar</label>
-                                <input class="form-control" type="file" id="formFile">
-                              </div> --}}
+
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Gambar</label>
+                                    <input type="file" name="image" id="image" class="form-control"
+                                        placeholder="image">
+                                </div>
+
                                 <div class="form-floating mb-3">
                                     <input type="number" class="form-control" id="price" name="price">
                                     <label for="price">Harga</label>
@@ -138,10 +141,11 @@
             </div>
 
             <!--  EditModal -->
+
             <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" action="" id="edit-form">
+                    <form method="post" action="" id="edit-form" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <input type="hidden" id="package-id" name="package-id">
@@ -168,10 +172,17 @@
                                         name="package-description">
                                     <label for="package-description">Deskripsi</label>
                                 </div>
-                                {{-- <div class="mb-3">
-                                <label for="formFile" class="form-label">Gambar</label>
-                                <input class="form-control" type="file" id="formFile">
-                              </div> --}}
+
+                                @foreach ($package as $p)
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">Gambar</label>
+                                        <input type="file" name="package-image" id="package-image"
+                                            class="form-control">
+                                        <img src="{{ asset('uploads/package/' . $p->image) }}" width="70px"
+                                            height="70px" alt="package-image">
+                                    </div>
+                                @endforeach
+
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="package-price"
                                         name="package-price">
@@ -215,15 +226,20 @@
                             <td>{{ $p->description }}</td>
                             <td>Rp. {{ $p->price }}</td>
                             <td>{{ $p->time }} Hari</td>
-                            <td>{{ $p->image }}</td>
+                            <td>
+                                <img src="{{ asset('uploads/package/' . $p->image) }}" width="70px" height="70px"
+                                    alt="package-image">
+                            </td>
+
                             <td>
                                 <button type="button" class="btn btn-primary editbtn" data-bs-toggle="modal"
                                     data-package-name="{{ $p->name }}" data-package-id="{{ $p->id }}"
                                     data-package-description="{{ $p->description }}"
                                     data-package-price="{{ $p->price }}" data-package-time="{{ $p->time }}"
-                                    data-bs-target="#edit">
+                                    data-package-image="{{ $p->image }}" data-bs-target="#edit">
                                     Edit
                                 </button>
+                                {{-- <a href="{{ url('adminpackage/'.$item->id) }}" class="btn btn-primary btn-sm">Edit</a> --}}
                                 @section('name')
                                 @endsection
 
@@ -257,15 +273,18 @@
                 var description = $(e.relatedTarget).data('package-description');
                 var price = $(e.relatedTarget).data('package-price');
                 var time = $(e.relatedTarget).data('package-time');
+                var image = $(e.relatedTarget).data('package-image');
 
-                $('#package-name').attr("value", name);
                 $('#edit-form').attr("action", "/adminpackage/" + id);
                 $('#package-id').attr("value", id);
+                $('#package-name').attr("value", name);
                 $('#package-description').attr("value", description);
                 $('#package-price').attr("value", price);
                 $('#package-time').attr("value", time);
+                $('#package-image').attr("value", image);
 
             })
+
             $('#edit').on('hidden.bs.modal', function(e) {
                 $(this).find('form').trigger('reset');
 

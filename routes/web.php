@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
-use App\Http\Controllers\ImageUploadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +29,13 @@ Route::post('/adminpackage', [PackageController::class, 'store']);
 Route::put('/adminpackage/{id}', [PackageController::class, 'edit']);
 Route::delete('/adminpackage/{id}', [PackageController::class, 'destroy']);
 
+
 //Route Admin Service
 Route::get('/adminservice', [ServiceController::class, 'index']);
 Route::post('/adminservice', [ServiceController::class, 'store']);
 Route::put('/adminservice/{id}', [ServiceController::class, 'edit']);
 Route::delete('/adminservice/{id}', [ServiceController::class, 'destroy']);
+
+
+//Image
+// Route::resource('/adminpackage', [PackageController::class]);
