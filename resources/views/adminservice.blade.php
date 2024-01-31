@@ -10,6 +10,9 @@
     <!-- Box Icons  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- Styles  -->
     <link rel="shortcut icon" href="assets/img/kxp_fav.png" type="image/x-icon">
@@ -111,15 +114,68 @@
                                     <input type="text" class="form-control" id="description" name="description">
                                     <label for="description">Deskripsi</label>
                                 </div>
+
                                 {{-- <div class="mb-3">
                                 <label for="formFile" class="form-label">Gambar</label>
                                 <input class="form-control" type="file" id="formFile">
                               </div> --}}
+
                             </div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--  EditModal -->
+            <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="editLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form method="post" action="" id="edit-form">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" id="service-id" name="service-id">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="editLabel">Edit Layanan</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="service-name"
+                                        name="service-name">
+                                    <label for="service-name">Nama</label>
+                                    @error('service-name')
+                                        <p class="text-danger">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="service-description"
+                                        name="service-description">
+                                    <label for="service-description">Deskripsi</label>
+                                </div>
+
+                                {{-- <div class="mb-3">
+                <label for="formFile" class="form-label">Gambar</label>
+                <input class="form-control" type="file" id="formFile">
+              </div> --}}
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+
                         </div>
                     </form>
                 </div>
@@ -133,7 +189,7 @@
                         <th scope="col">Nama Layanan</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Image</th>
-                        <th scope="col">Edit</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -144,13 +200,21 @@
                             <td>{{ $s->description }}</td>
                             <td>{{ $s->image }}</td>
                             <td>
-                                <button type="button" class="btn btn-success">Edit</button>
+                                <button type="button" class="btn btn-primary editbtn" data-bs-toggle="modal"
+                                    data-service-name="{{ $s->name }}" data-service-id="{{ $s->id }}"
+                                    data-service-description="{{ $s->description }}" data-bs-target="#edit">
+                                    Edit
+                                </button>
+                                @section('name')
+                                @endsection
+
                                 <form action="/adminservice/{{ $s->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-danger"
                                         onclick="return confirm('Apakah anda serius dengan menghapusnya?')">Delete</button>
                                 </form>
+
                             </td>
                         </tr>
                     @endforeach
@@ -163,6 +227,27 @@
     <script type="text/javascript" src="{!! asset('assets/js/main.js') !!}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#edit').on('show.bs.modal', function(e) {
+
+                var id = $(e.relatedTarget).data('service-id');
+                var name = $(e.relatedTarget).data('service-name');
+                var description = $(e.relatedTarget).data('service-description');
+
+                $('#service-name').attr("value", name);
+                $('#edit-form').attr("action", "/adminservice/" + id);
+                $('#service-id').attr("value", id);
+                $('#service-description').attr("value", description);
+
+            })
+            $('#edit').on('hidden.bs.modal', function(e) {
+                $(this).find('form').trigger('reset');
+
+            })
+        });
     </script>
 </body>
 </body>

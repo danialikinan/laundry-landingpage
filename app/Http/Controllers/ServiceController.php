@@ -63,9 +63,22 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Request $request)
     {
-        //
+        $request->validate([
+            'service-name' => 'required',
+            'service-description' => 'required',
+        ]);
+
+        $id =  $request->get('service-id');
+        $service = Service::find($id);
+        if ($service == null) {
+            return redirect('/adminservice')->with('success', 'Service tidak ditemukan');
+        }
+        $service->name = $request->get("service-name");
+        $service->description = $request->get("service-description");
+        $service->save();
+        return redirect('/adminservice')->with('success', 'Data Berhasil Disimpan');
     }
 
     /**

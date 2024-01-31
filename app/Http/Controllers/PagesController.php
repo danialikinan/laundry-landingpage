@@ -4,16 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Service;
+use App\Models\Package;
+
 class PagesController extends Controller
 {
     public function home()
     {
-        return view('index');
+        $service = Service::get();
+        return view('index', compact('service'));
     }
 
     public function service()
     {
-        return view('service');
+        $service = Service::get();
+        return view('service', compact('service'));
+    }
+
+    public function package()
+    {
+        $package = Package::get();
+        return view('package', compact('package'));
     }
 
     public function about()
@@ -24,11 +35,6 @@ class PagesController extends Controller
     public function contact()
     {
         return view('contact');
-    }
-
-    public function package()
-    {
-        return view('package');
     }
 
     public function login()

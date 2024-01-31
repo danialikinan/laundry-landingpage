@@ -65,10 +65,27 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function edit(Package $package)
+    public function edit(Request $request)
     {
-        //
+        $request->validate([
+            'package-name' => 'required',
+            'package-description' => 'required',
+            'package-price' => 'required',
+            'package-time' => 'required'
+        ]);
+        $id =  $request->get('package-id');
+        $package = Package::find($id);
+        if ($package == null) {
+            return redirect('/adminpackage')->with('success', 'Paket tidak ditemukan');
+        }
+        $package->name = $request->get("package-name");
+        $package->description = $request->get("package-description");
+        $package->price = $request->get("package-price");
+        $package->time = $request->get("package-time");
+        $package->save();
+        return redirect('/adminpackage')->with('success', 'Data Berhasil Disimpan');
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -77,7 +94,7 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Package $package)
+    public function update(Request $request)
     {
         //
     }

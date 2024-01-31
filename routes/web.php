@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\ImageUploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,17 +18,19 @@ use App\Http\Controllers;
 //Route Landing Page
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/service', [PagesController::class, 'service']);
+Route::get('/package', [PagesController::class, 'package']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/contact', [PagesController::class, 'contact']);
-Route::get('/package', [PagesController::class, 'package']);
 Route::get('/login', [PagesController::class, 'login']);
 
 //Route Admin Package
 Route::get('/adminpackage', [PackageController::class, 'index']);
 Route::post('/adminpackage', [PackageController::class, 'store']);
+Route::put('/adminpackage/{id}', [PackageController::class, 'edit']);
 Route::delete('/adminpackage/{id}', [PackageController::class, 'destroy']);
 
 //Route Admin Service
 Route::get('/adminservice', [ServiceController::class, 'index']);
 Route::post('/adminservice', [ServiceController::class, 'store']);
+Route::put('/adminservice/{id}', [ServiceController::class, 'edit']);
 Route::delete('/adminservice/{id}', [ServiceController::class, 'destroy']);
