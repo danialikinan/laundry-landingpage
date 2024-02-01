@@ -113,7 +113,7 @@
         </div>
         <div class="container">
 
-            <h1>Layanan</h1>
+            <h1>Users</h1>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
                 Tambah
@@ -123,12 +123,12 @@
             <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="tambahLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" action="/adminservice" enctype="multipart/form-data">
+                    <form method="post" action="/adminuser">
                         @csrf
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="tambahLabel">Tambah Layanan</h1>
+                                <h1 class="modal-title fs-5" id="tambahLabel">Tambah User</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -142,15 +142,35 @@
                                         </p>
                                     @enderror
                                 </div>
+
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="description" name="description">
-                                    <label for="description">Deskripsi</label>
+                                    <input type="text" class="form-control" name="username" id="username">
+                                    <label for="username">Username</label>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="image" class="form-label">Gambar</label>
-                                    <input type="file" name="image" id="image" class="form-control"
-                                        placeholder="image">
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="password" name="password">
+                                    <label for="password">Password</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="email" id="email">
+                                    <label for="email">Email</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="phone" id="phone">
+                                    <label for="phone">Phone</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="address" id="address">
+                                    <label for="address">Address</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="role" id="role">
+                                    <label for="role">Role</label>
                                 </div>
 
                             </div>
@@ -169,43 +189,60 @@
             <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form method="post" action="" id="edit-form" enctype="multipart/form-data">
+                    <form method="post" action="" id="edit-form">
                         @csrf
                         @method('PUT')
-                        <input type="hidden" id="service-id" name="service-id">
+                        <input type="hidden" id="admin-id" name="admin-id">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editLabel">Edit Layanan</h1>
+                                <h1 class="modal-title fs-5" id="editLabel">Edit User</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
 
                             <div class="modal-body">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="service-name"
-                                        name="service-name">
-                                    <label for="service-name">Nama</label>
-                                    @error('service-name')
+                                    <input type="text" class="form-control" id="admin-name" name="admin-name">
+                                    <label for="admin-name">Nama</label>
+                                    @error('admin-name')
                                         <p class="text-danger">
                                             {{ $message }}
                                         </p>
                                     @enderror
                                 </div>
+
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="service-description"
-                                        name="service-description">
-                                    <label for="service-description">Deskripsi</label>
+                                    <input type="text" class="form-control" name="admin-username"
+                                        id="admin-username">
+                                    <label for="admin-username">Username</label>
                                 </div>
 
-                                @foreach ($service as $s)
-                                    <div class="mb-3">
-                                        <label for="image" class="form-label">Gambar</label>
-                                        <input type="file" name="service-image" id="service-image"
-                                            class="form-control">
-                                        <img src="{{ asset('uploads/service/' . $s->image) }}" width="70px"
-                                            height="70px" alt="service-image">
-                                    </div>
-                                @endforeach
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="admin-password"
+                                        name="admin-password">
+                                    <label for="admin-password">Password</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="admin-email" id="admin-email">
+                                    <label for="admin-email">Email</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="admin-phone" id="admin-phone">
+                                    <label for="phone">Phone</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="admin-address"
+                                        id="admin-address">
+                                    <label for="address">Address</label>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="admin-role" id="admin-role">
+                                    <label for="role">Role</label>
+                                </div>
 
                             </div>
 
@@ -225,37 +262,43 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama Layanan</th>
-                        <th scope="col">Deskripsi</th>
-                        <th scope="col">Image</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Nomor Handphone</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($service as $s)
+                    @foreach ($user as $u)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $s->name }}</td>
-                            <td>{{ $s->description }}</td>
-                            <td><img src="{{ asset('uploads/service/' . $s->image) }}" width="70px" height="70px"
-                                    alt="service-image"></td>
+                            <td>{{ $u->name }}</td>
+                            <td>{{ $u->username }}</td>
+                            <td>{{ $u->email }}</td>
+                            <td>{{ $u->phone }}</td>
+                            <td>{{ $u->address }}</td>
+                            <td>{{ $u->role }}</td>
                             <td>
                                 <button type="button" class="btn btn-primary editbtn" data-bs-toggle="modal"
-                                    data-service-name="{{ $s->name }}" data-service-id="{{ $s->id }}"
-                                    data-service-description="{{ $s->description }}"
-                                    data-bs-image="{{ $s->image }}" data-bs-target="#edit">
+                                    data-admin-name="{{ $u->name }}" data-admin-id="{{ $u->id }}"
+                                    data-admin-password="{{ $u->password }}"
+                                    data-admin-username="{{ $u->username }}" data-admin-email="{{ $u->email }}"
+                                    data-admin-phone="{{ $u->phone }}" data-admin-address="{{ $u->address }}"
+                                    data-admin-role="{{ $u->role }}" data-bs-target="#edit">
                                     Edit
                                 </button>
                                 @section('name')
                                 @endsection
 
-                                <form action="/adminservice/{{ $s->id }}" method="post" class="d-inline">
+                                <form action="/adminuser/{{ $u->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-danger"
                                         onclick="return confirm('Apakah anda serius dengan menghapusnya?')">Delete</button>
                                 </form>
-
                             </td>
                         </tr>
                     @endforeach
@@ -274,16 +317,24 @@
         $(document).ready(function() {
             $('#edit').on('show.bs.modal', function(e) {
 
-                var id = $(e.relatedTarget).data('service-id');
-                var name = $(e.relatedTarget).data('service-name');
-                var description = $(e.relatedTarget).data('service-description');
-                var image = $(e.relatedTarget).data('service-image');
+                var id = $(e.relatedTarget).data('admin-id');
+                var name = $(e.relatedTarget).data('admin-name');
+                var password = $(e.relatedTarget).data('admin-password');
+                var username = $(e.relatedTarget).data('admin-username');
+                var email = $(e.relatedTarget).data('admin-email');
+                var phone = $(e.relatedTarget).data('admin-phone');
+                var address = $(e.relatedTarget).data('admin-address');
+                var role = $(e.relatedTarget).data('admin-role');
 
-                $('#edit-form').attr("action", "/adminservice/" + id);
-                $('#service-name').attr("value", name);
-                $('#service-id').attr("value", id);
-                $('#service-description').attr("value", description);
-                $('#service-image').attr("value", image);
+                $('#edit-form').attr("action", "/adminuser/" + id);
+                $('#admin-id').attr("value", id);
+                $('#admin-name').attr("value", name);
+                $('#admin-password').attr("value", password);
+                $('#admin-username').attr("value", username);
+                $('#admin-email').attr("value", email);
+                $('#admin-phone').attr("value", phone);
+                $('#admin-address').attr("value", address);
+                $('#admin-role').attr("value", role);
 
             })
             $('#edit').on('hidden.bs.modal', function(e) {

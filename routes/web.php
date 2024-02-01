@@ -15,27 +15,37 @@ use App\Http\Controllers;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //Route Landing Page
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/service', [PagesController::class, 'service']);
 Route::get('/package', [PagesController::class, 'package']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/contact', [PagesController::class, 'contact']);
-Route::get('/login', [PagesController::class, 'login']);
 
-//Route Admin Package
-Route::get('/adminpackage', [PackageController::class, 'index']);
-Route::post('/adminpackage', [PackageController::class, 'store']);
-Route::put('/adminpackage/{id}', [PackageController::class, 'edit']);
-Route::delete('/adminpackage/{id}', [PackageController::class, 'destroy']);
-
-
-//Route Admin Service
-Route::get('/adminservice', [ServiceController::class, 'index']);
-Route::post('/adminservice', [ServiceController::class, 'store']);
-Route::put('/adminservice/{id}', [ServiceController::class, 'edit']);
-Route::delete('/adminservice/{id}', [ServiceController::class, 'destroy']);
+Route::group(['middleware' => ['auth']], function () {
+    //Route Admin Package
+    Route::get('/adminpackage', [PackageController::class, 'index']);
+    Route::post('/adminpackage', [PackageController::class, 'store']);
+    Route::put('/adminpackage/{id}', [PackageController::class, 'edit']);
+    Route::delete('/adminpackage/{id}', [PackageController::class, 'destroy']);
 
 
-//Image
-// Route::resource('/adminpackage', [PackageController::class]);
+    //Route Admin Service
+    Route::get('/adminservice', [ServiceController::class, 'index']);
+    Route::post('/adminservice', [ServiceController::class, 'store']);
+    Route::put('/adminservice/{id}', [ServiceController::class, 'edit']);
+    Route::delete('/adminservice/{id}', [ServiceController::class, 'destroy']);
+
+
+    //Route Users
+    Route::get('/adminuser', [UserController::class, 'index']);
+    Route::post('/adminuser', [UserController::class, 'store']);
+    Route::put('/adminuser/{id}', [UserController::class, 'edit']);
+    Route::delete('/adminuser/{id}', [UserController::class, 'destroy']);
+});
+
+//Route Login
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'auth']);
+Route::get('/logout', [LoginController::class, 'logout']);

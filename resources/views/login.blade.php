@@ -95,30 +95,37 @@
 
         <article class="border">
             <h1>Login</h1>
-            <section class="inputs">
-                <p class="laple">Username</p>
-                <i class=" info fa-regular fa-user"></i>
-                <input placeholder="Type your Username" type="text">
-                <hr>
-                <P class="error"></P>
-                <P class="error"></P>
-                <P class="error"></P>
-                <p class="laple">Password</p>
-                <i class=" info fa-solid fa-lock"></i>
-                <input class="pass" placeholder="Type your Password" type="password">
-                <i id="showen" class="show fa-solid fa-eye"></i>
-                <i id="hiddin" class="hiddin fa-solid fa-eye-slash"></i>
-                <hr class="hhr">
-                <P class="error error1"></P>
-                {{-- <a class="Forget" href="verfication_forget_pass.html">
-                <p>Forgot password?</p>
-            </a> --}}
-            </section>
-            <section>
-                <button onclick="location.href='/adminservice';">Login</button>
-            </section>
+            <form action="/login" method="POST">
+                @csrf
+                <section class="inputs">
+                    <p class="laple">Username</p>
+                    <i class=" info fa-regular fa-user"></i>
+                    <input placeholder="Type your Username" type="text" id="username" name="username">
+
+                    <hr>
+
+                    <P class="error"></P>
+                    <P class="error"></P>
+                    <P class="error"></P>
+                    <p class="laple">Password</p>
+                    <i class=" info fa-solid fa-lock"></i>
+                    <input class="pass" placeholder="Type your Password" type="password" id="password"
+                        name="password">
+                    {{-- <i id="showen" class="show fa-solid fa-eye"></i>
+                    <i id="hiddin" class="hiddin fa-solid fa-eye-slash"></i> --}}
+                    <hr class="hhr">
+                    <P class="error error1"></P>
+                </section>
+
+                <section>
+                    <button type="submit">Login</button>
+                </section>
+
+            </form>
+
             </section>
         </article>
+
         <script src="JS/login.js"></script>
 
 

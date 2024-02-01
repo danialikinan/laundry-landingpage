@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar Dropdown Menu | Korsat X Parmaga</title>
+    <title>Admin Quantumm Laundry</title>
 
     <!-- Box Icons  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,14 +32,43 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="{{ url('/adminservice') }}" class="link">
+                    <a href="{{ url('/') }}" class="link">
                         <i class='bx bx-grid-alt'></i>
+                        <span class="name">Dashboard</span>
+                    </a>
+                    <!-- <i class='bx bxs-chevron-down'></i> -->
+                </div>
+                <div class="submenu">
+                    <a href="{{ url('/') }}" class="link submenu-title">Dashboard</a>
+                    <!-- submenu links here  -->
+                </div>
+            </li>
+
+            <li>
+                <div class="title">
+                    <a href="{{ url('/adminservice') }}" class="link">
+                        <i class='bx bx-history'></i>
                         <span class="name">Layanan</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="{{ url('/adminpackage') }}" class="link submenu-title">Paket</a>
+                    <a href="{{ url('/adminservice') }}" class="link submenu-title">Layanan</a>
+                    <!-- submenu links here  -->
+                </div>
+            </li>
+
+            <!-- -------- Non Dropdown List Item ------- -->
+            <li>
+                <div class="title">
+                    <a href="{{ url('/adminuser') }}" class="link">
+                        <i class='bx bx-history'></i>
+                        <span class="name">Users</span>
+                    </a>
+                    <!-- <i class='bx bxs-chevron-down'></i> -->
+                </div>
+                <div class="submenu">
+                    <a href="{{ url('/adminuser') }}" class="link submenu-title">User</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -62,14 +91,14 @@
             <!-- -------- Non Dropdown List Item ------- -->
             <li>
                 <div class="title">
-                    <a href="{{ url('/') }}" class="link">
+                    <a href="{{ url('/logout') }}" class="link">
                         <i class='bx bx-cog'></i>
                         <span class="name">Log Out</span>
                     </a>
                     <!-- <i class='bx bxs-chevron-down'></i> -->
                 </div>
                 <div class="submenu">
-                    <a href="{{ url('/') }}" class="link submenu-title">Log Out</a>
+                    <a href="{{ url('/logout') }}" class="link submenu-title">Log Out</a>
                     <!-- submenu links here  -->
                 </div>
             </li>
@@ -80,7 +109,7 @@
     <section class="home">
         <div class="toggle-sidebar">
             <i class='bx bx-menu'></i>
-            <div class="text">Toggle</div>
+            <div class="text"></div>
         </div>
         <div class="container">
             <h1>Paket</h1>

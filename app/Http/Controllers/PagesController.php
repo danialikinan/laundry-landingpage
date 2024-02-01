@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Service;
 use App\Models\Package;
+use App\Models\User;
 
 class PagesController extends Controller
 {
@@ -25,6 +26,11 @@ class PagesController extends Controller
     {
         $package = Package::get();
         return view('package', compact('package'));
+    }
+
+    public function user()
+    {
+        return view('adminuser');
     }
 
     public function about()
