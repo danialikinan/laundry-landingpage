@@ -48,7 +48,7 @@ class ServiceController extends Controller
             $service->image = $filename;
         }
         $service->save();
-        return redirect('/adminservice')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('/adminservice');
     }
 
     /**
@@ -87,7 +87,7 @@ class ServiceController extends Controller
 
 
         $service->update();
-        return redirect('/adminservice')->with('success', 'Data Berhasil Diupdate');
+        return redirect('/adminservice');
     }
 
     /**
@@ -111,6 +111,6 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         Service::destroy($id);
-        return redirect('/adminservice')->with('success', 'Data Berhasil Dihapus');
+        return redirect('/adminservice');
     }
 }

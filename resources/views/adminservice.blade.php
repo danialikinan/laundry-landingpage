@@ -83,18 +83,23 @@
             <div class="text">Toggle</div>
         </div>
         <div class="container">
+            @if (session('status'))
+                <h6 class="alert alert-success">{{ session('status') }}</h6>
+            @endif
             <h1>Layanan</h1>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">
                 Tambah
             </button>
             <!-- Modal -->
+
             <div class="modal fade" id="tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="tambahLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <form method="post" action="/adminservice" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-content">
+
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="tambahLabel">Tambah Layanan</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"

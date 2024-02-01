@@ -50,7 +50,7 @@ class PackageController extends Controller
             $package->image = $filename;
         }
         $package->save();
-        return redirect('/adminpackage')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('/adminpackage');
     }
 
     /**
@@ -91,7 +91,7 @@ class PackageController extends Controller
 
 
         $package->update();
-        return redirect('/adminpackage')->with('success', 'Data Berhasil Diupdate');
+        return redirect('/adminpackage');
     }
 
 
@@ -116,6 +116,6 @@ class PackageController extends Controller
     public function destroy($id)
     {
         Package::destroy($id);
-        return redirect('/adminpackage')->with('success', 'Data Berhasil Dihapus');
+        return redirect('/adminpackage');
     }
 }
